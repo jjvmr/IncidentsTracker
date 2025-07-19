@@ -1,0 +1,41 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# ASP.NET secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+appsettings.*.json
+!appsettings.json  # Keep base config tracked
+
+# IIS Express
+.vs/
+*.vspscc
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+packages/
+.nuget/
+
+# Other
+*.db
+
+# LibMan downloaded libraries
+wwwroot/lib/
+
+# ASP.NET Core environment-specific files
+appsettings.*.json
+!appsettings.json  # Keep base config tracked
