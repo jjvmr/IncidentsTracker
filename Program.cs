@@ -1,7 +1,14 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using IncidentsTrackingSystem.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ProjHubContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjHubContext") ?? throw new InvalidOperationException("Connection string 'ProjHubContext' not found.")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
@@ -12,6 +19,12 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+else
+{
+    app.UseDeveloperExceptionPage();
+    app.UseMigrationsEndPoint();
+}
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
