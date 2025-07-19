@@ -12,6 +12,10 @@ namespace IncidentsTrackingSystem.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        public ICollection<Role>? UserRoles { get; set; } // Navigation property for roles
+        public string DisplayName { get; set; }
+        public ICollection<Project> AssignedProjects { get; set; } // Projects this user is assigned to
+        public ICollection<Ticket> SubmittedTickets { get; set; } // Tickets this user submitted
+
+        public ICollection<Role>? AppUserRoles { get; set; } // Navigation property for roles
     }
 }

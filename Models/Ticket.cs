@@ -2,9 +2,9 @@
 
 namespace IncidentsTrackingSystem.Models
 {
-    public class IncidentTicket
+    public class Ticket
     {
-        public int Id { get; set; }
+        public int TicketId { get; set; }
         [Required]
         public string Title { get; set; }
 
@@ -15,7 +15,11 @@ namespace IncidentsTrackingSystem.Models
 
         public Project? Project { get; set; }
         public int ProjectId { get; set; }
+        public AppUser Submitter { get; set; }
+        public int SubmitterId { get; set; }
 
+
+        // TODO: Uncomment and implement these properties when the related classes are available
         //public TicketType TicketType { get; set; }
         //public int TicketTypeId { get; set; }
 
@@ -25,17 +29,14 @@ namespace IncidentsTrackingSystem.Models
         //public TicketPriority TicketPriority { get; set; }
         //public int TicketPriorityId { get; set; }
 
-        //public ApplicationUser Submitter { get; set; }
-        //public string SubmitterId { get; set; }
-
-        //public ApplicationUser AssignedDev { get; set; }
+        //public AppUser AssignedDev { get; set; }
         //public string AssignedDevId { get; set; }
 
         //public ICollection<TicketUpdate> TicketUpdates { get; set; }
         //public ICollection<Comment> Comments { get; set; }
         //public ICollection<Attachment> Attachments { get; set; }
 
-        public IncidentTicket()
+        public Ticket()
         {
             {
                 Created = DateTime.Now;

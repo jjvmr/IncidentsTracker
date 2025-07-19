@@ -12,14 +12,14 @@ namespace IncidentsTrackingSystem.Models
         public DateTimeOffset Created { get; set; }
         [DisplayFormat(NullDisplayText = "Not yet updated")]
         public DateTimeOffset? Updated { get; set; }
-        public ICollection<AppUser> UsersAssigned { get; set; }
-        public ICollection<IncidentTicket> ProjectIncidents { get; set; }
+        public AppUser UserAssigned { get; set; }
+        public int UserAssignedId { get; set; }
+        public ICollection<Ticket> ProjectIncidents { get; set; }
         public bool IsArchived { get; set; }
 
         public Project()
         {
             Created = DateTime.Now;
-            UsersAssigned = new List<AppUser>();
             IsArchived = false;
         }
     }
