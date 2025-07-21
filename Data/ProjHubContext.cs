@@ -20,12 +20,14 @@ namespace IncidentsTrackingSystem.Data
         public DbSet<Ticket> IncidentTickets { get; set; }
 
 
-        // OPTIONAL:  Method used to configure the model and relationships
+        // Fluent API: Method used to configure the model and relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().ToTable("Role");
             modelBuilder.Entity<Project>().ToTable("Project");
             modelBuilder.Entity<Ticket>().ToTable("IncidentTicket");
+            modelBuilder.Entity<AppUser>().ToTable("AppUser");
+
 
             modelBuilder.Entity<Project>()
                 .HasOne(p => p.UserAssigned)

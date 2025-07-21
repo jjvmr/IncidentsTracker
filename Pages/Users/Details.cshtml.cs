@@ -28,7 +28,14 @@ namespace IncidentsTrackingSystem.Pages.Users
                 return NotFound();
             }
 
-            var appuser = await _context.AppUsers.FirstOrDefaultAsync(m => m.ID == id);
+            //var appuser = await _context.AppUsers.FirstOrDefaultAsync(m => m.ID == id);
+
+            var appuser = await _context.AppUsers
+                .Include(u => u.SubmittedTickets)
+                .ThenInclude(p => p.Project) // Include the user assigned to the project
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+
             if (appuser == null)
             {
                 return NotFound();

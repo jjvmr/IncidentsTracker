@@ -40,27 +40,33 @@ namespace IncidentsTrackingSystem.Data
             context.Roles.AddRange(roles);
             context.SaveChanges();
 
-            var tickets = new Ticket[]
-            {
-                new Ticket { Title = "Sample Ticket 2", Description = "This is a sample ticket description.", ProjectId = 3, SubmitterId = 1 },
-                new Ticket { Title = "Sample Ticket 1", Description = "This is a sample ticket description.", ProjectId = 1, SubmitterId = 2 },
-                new Ticket { Title = "Sample Ticket 2", Description = "This is a sample ticket description.", ProjectId = 3, SubmitterId = 2 },
-                new Ticket { Title = "Sample Ticket 3", Description = "This is a sample ticket description.", ProjectId = 2, SubmitterId = 5 },
-                new Ticket { Title = "Sample Ticket 3", Description = "This is a sample ticket description.", ProjectId = 3, SubmitterId = 5 }
-            };
-
             var projects = new Project[]
             {
-                new Project { ProjectId = 1, Name = "Project 1", Created = DateTime.Parse("2019-09-01"), UserAssignedId = 4 },
-                new Project { ProjectId = 2, Name = "Project 2", Created = DateTime.Parse("2017-07-15"), UserAssignedId = 3 },
-                new Project { ProjectId = 3, Name = "Project 3", Created = DateTime.Parse("2013-04-17"), UserAssignedId = 1 },
-                new Project { ProjectId = 4, Name = "Project 4", Created = DateTime.Parse("2020-12-21"), UserAssignedId = 5 },
-                new Project { ProjectId = 5, Name = "Project 5", Created = DateTime.Parse("2024-02-30"), UserAssignedId = 6 }
+                new Project { ProjectId = 1, Title = "Project 1", Created = DateTime.Parse("2019-09-01"), UserAssignedId = 4 },
+                new Project { ProjectId = 2, Title = "Project 2", Created = DateTime.Parse("2017-07-15"), UserAssignedId = 3 },
+                new Project { ProjectId = 3, Title = "Project 3", Created = DateTime.Parse("2013-04-17"), UserAssignedId = 1 },
+                new Project { ProjectId = 4, Title = "Project 4", Created = DateTime.Parse("2020-12-21"), UserAssignedId = 5 },
+                new Project { ProjectId = 5, Title = "Project 5", Created = DateTime.Parse("2024-02-11"), UserAssignedId = 6 },
+                new Project { ProjectId = 6, Title = "Project 6", Created = DateTime.Parse("2013-12-02"), UserAssignedId = 1 },
             };
             
             context.Projects.AddRange(projects);
             context.SaveChanges();
+            
+            var tickets = new Ticket[]
+            {
+                new Ticket { Title = "Sample Ticket 1", Description = "This is a sample ticket description for Project 2.", ProjectId = 2, SubmitterId = 1 },
+                new Ticket { Title = "Sample Ticket 2", Description = "This is a sample ticket description for Project 6.", ProjectId = 6, SubmitterId = 2 },
+                new Ticket { Title = "Sample Ticket 3", Description = "This is a sample ticket description for Project 2.", ProjectId = 2, SubmitterId = 1 },
+                new Ticket { Title = "Sample Ticket 4", Description = "This is a sample ticket description for Project 6.", ProjectId = 6, SubmitterId = 1 },
+                new Ticket { Title = "Sample Ticket 5", Description = "This is a sample ticket description for Project 6.", ProjectId = 6, SubmitterId = 5 },
+                new Ticket { Title = "Sample Ticket 6", Description = "This is a sample ticket description for Project 6.", ProjectId = 6, SubmitterId = 5 },
+                new Ticket { Title = "Sample Ticket 7", Description = "This is a sample ticket description for Project 3.", ProjectId = 3, SubmitterId = 1 }
+            };
 
+            context.IncidentTickets.AddRange(tickets);
+            context.SaveChanges();
+    
             // to add a role to a user, you would typically do this after the users are created
             // Example: Assigning roles to users
             // This is a placeholder for role assignment logic

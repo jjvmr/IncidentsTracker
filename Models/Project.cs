@@ -8,13 +8,13 @@ namespace IncidentsTrackingSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)] 
         public int ProjectId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
         public DateTimeOffset Created { get; set; }
         [DisplayFormat(NullDisplayText = "Not yet updated")]
         public DateTimeOffset? Updated { get; set; }
         public AppUser UserAssigned { get; set; }
         public int UserAssignedId { get; set; }
-        public ICollection<Ticket> ProjectIncidents { get; set; }
+        public ICollection<Ticket>? ProjectIncidents { get; set; }
         public bool IsArchived { get; set; }
 
         public Project()
