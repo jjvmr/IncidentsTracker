@@ -30,43 +30,36 @@ namespace IncidentsTrackingSystem.Pages.Users
                 return NotFound();
             }
 
-            var appuser =  await _context.AppUsers.FirstOrDefaultAsync(m => m.ID == id);
-            if (appuser == null)
+            AppUser = await _context.AppUsers.FindAsync(id);
+
+            if (AppUser == null)
             {
                 return NotFound();
             }
-            AppUser = appuser;
-            return Page();
+            return  Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var userToUpdate = await _context.AppUsers.FindAsync(id);
+
+            if (userToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(AppUser).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<AppUser>(
+                userToUpdate,
+                "AppUser",
+                s => s.UserName, s => s.Email, s => s.Password))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AppUserExists(AppUser.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool AppUserExists(int id)
