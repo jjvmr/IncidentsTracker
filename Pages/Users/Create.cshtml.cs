@@ -30,15 +30,35 @@ namespace IncidentsTrackingSystem.Pages.Users
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+
+            var emptyUser = new AppUser();
+            if (await TryUpdateModelAsync<AppUser>(
+                emptyUser,
+                "AppUser",   // Prefix for form value.
+                s => s.UserName, s => s.Email, s => s.Password))
             {
-                return Page();
+                // this is for adding a new user from form submission
+                _context.AppUsers.Add(emptyUser);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            else
+            {
+                // Log model errors
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage); // or log issue
+                }
             }
 
-            _context.AppUsers.Add(AppUser);
-            await _context.SaveChangesAsync();
+            return Page();
 
-            return RedirectToPage("./Index");
+            // Uncomment the following lines if you want to validate the model state 
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
         }
     }
 }

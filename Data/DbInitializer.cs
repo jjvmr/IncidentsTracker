@@ -16,12 +16,12 @@ namespace IncidentsTrackingSystem.Data
 
             var users = new AppUser[]
             {
-                new AppUser { UserName = "admin@its.com", Email = "admin@its.com", Password = "Admin123!", DisplayName = "Admin" },
-                new AppUser { UserName = "developer@its.com", Email = "developer@its.com", Password = "Admin123!", DisplayName = "Developer" },
-                new AppUser { UserName = "pm@its.com", Email = "pm@its.com", Password = "Admin123!", DisplayName = "Project Manager" },
-                new AppUser { UserName = "submitter@its.com", Email = "submitter@its.com", Password = "Admin123!", DisplayName = "Submitter" },
-                new AppUser { UserName = "user1@its.com", Email = "user1@its.com", Password = "Admin123!", DisplayName = "Test User 1" },
-                new AppUser { UserName = "user2@its.com", Email = "user2@its.com", Password = "Admin123!", DisplayName = "Test User 2" },
+                new AppUser { UserName = "admin@its.com", Email = "admin@its.com", Password = "Admin123!" },
+                new AppUser { UserName = "developer@its.com", Email = "developer@its.com", Password = "Admin123!" },
+                new AppUser { UserName = "pm@its.com", Email = "pm@its.com", Password = "Admin123!" },
+                new AppUser { UserName = "submitter@its.com", Email = "submitter@its.com", Password = "Admin123!" },
+                new AppUser { UserName = "user1@its.com", Email = "user1@its.com", Password = "Admin123!" },
+                new AppUser { UserName = "user2@its.com", Email = "user2@its.com", Password = "Admin123!" }
 
             };
 
